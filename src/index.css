@@ -1,0 +1,212 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
+
+@layer base {
+  :root {
+    --background: 255 38% 93%;
+    --foreground: 242 87% 15%;
+
+    --card: 255 38% 93%;
+    --card-foreground: 242 87% 15%;
+
+    --popover: 255 38% 93%;
+    --popover-foreground: 242 87% 15%;
+
+    --primary: 242 87% 15%;
+    --primary-foreground: 255 38% 93%;
+
+    --secondary: 0 0% 85%;
+    --secondary-foreground: 243 25% 31%;
+
+    --muted: 0 0% 85%;
+    --muted-foreground: 243 25% 31%;
+
+    --accent: 266 21% 63%;
+    --accent-foreground: 242 87% 15%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 266 21% 63%;
+    --input: 266 21% 63%;
+    --ring: 243 25% 31%;
+
+    --radius: 1rem;
+
+    /* Custom tokens */
+    --sage: 266 21% 63%;
+    --sage-light: 0 0% 85%;
+    --sage-dark: 243 25% 31%;
+    --cream: 255 38% 93%;
+    --cream-warm: 0 0% 85%;
+    --clay: 0 0% 85%;
+    --clay-dark: 266 21% 63%;
+    --fog: 0 0% 85%;
+    --earth: 242 87% 15%;
+    --earth-light: 243 25% 31%;
+
+    /* Pastel accents */
+    --pastel-rose: 266 21% 63%;
+    --pastel-lavender: 255 38% 93%;
+    --pastel-peach: 0 0% 85%;
+    --pastel-mint: 243 25% 31%;
+    --pastel-sky: 266 21% 63%;
+
+    /* Glassmorphism */
+    --glass-bg: 255 38% 93% / 0.6;
+    --glass-border: 266 21% 63% / 0.3;
+    --glass-blur: 20px;
+
+    /* ── Unified Shadow System ────────────────────────── */
+    /* Subtle ambient lift -- cards at rest               */
+    --shadow-soft: 0 2px 8px rgba(7, 5, 70, 0.06),
+                   0 8px 32px rgba(7, 5, 70, 0.08);
+    /* Medium depth -- elevated sections / images        */
+    --shadow-card: 0 4px 16px rgba(7, 5, 70, 0.10),
+                   0 16px 48px rgba(7, 5, 70, 0.10);
+    /* Accent glow -- hover state / CTA buttons          */
+    --shadow-glow: 0 0 0 1px rgba(158, 142, 179, 0.2),
+                   0 8px 32px rgba(158, 142, 179, 0.30),
+                   0 24px 64px rgba(7, 5, 70, 0.12);
+    /* Button press glow                                 */
+    --shadow-btn:  0 0 20px rgba(7, 5, 70, 0.25),
+                   0 4px 16px rgba(7, 5, 70, 0.20);
+    /* ─────────────────────────────────────────────────── */
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    /* Bump global base from 16px → 18px */
+    font-size: 18px;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    cursor: none;
+    line-height: 1.75;
+    font-family: 'DM Sans', system-ui, sans-serif;
+  }
+
+  /* ── Heading scale & font assignment ────────────────── */
+  h1 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    line-height: 1.1;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    line-height: 1.18;
+    font-weight: 400;
+  }
+
+  h3 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    line-height: 1.25;
+    font-weight: 500;
+  }
+
+  h4, h5, h6 {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+  }
+
+  /* ── Body copy ──────────────────────────────────────── */
+  p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  /* ── Lora for pull-quotes / italic passages ─────────── */
+  blockquote, .font-quote {
+    font-family: 'Lora', Georgia, serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    line-height: 1.7;
+  }
+
+  /* ── Utility overrides for common Tailwind text sizes ─ */
+  .text-xs   { font-size: 0.82rem !important; }
+  .text-sm   { font-size: 0.95rem !important; }
+  .text-base { font-size: 1.1rem  !important; }
+  .text-lg   { font-size: 1.2rem  !important; }
+  .text-xl   { font-size: 1.35rem !important; }
+  .text-2xl  { font-size: 1.6rem  !important; }
+  .text-3xl  { font-size: 2rem    !important; }
+  .text-4xl  { font-size: 2.5rem  !important; }
+  .text-5xl  { font-size: 3.2rem  !important; }
+  .text-6xl  { font-size: 4rem    !important; }
+  .text-7xl  { font-size: 5rem    !important; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Cards at rest */
+  .glass-card {
+    @apply bg-card/60 backdrop-blur-xl border border-border/30 rounded-2xl;
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* Cards with hover lift + glow */
+  .glass-card-hover {
+    @apply glass-card transition-all duration-500 ease-out;
+  }
+
+  .glass-card-hover:hover {
+    box-shadow: var(--shadow-glow);
+    @apply border-sage/40 scale-[1.02];
+  }
+
+  /* Image shadow — used on all <img> cards */
+  .img-shadow {
+    box-shadow: var(--shadow-card);
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-sage-dark via-earth to-clay-dark bg-clip-text text-transparent;
+  }
+
+  .btn-ripple {
+    @apply relative overflow-hidden transition-all duration-500 ease-out;
+  }
+
+  .btn-ripple:hover {
+    @apply scale-105;
+    box-shadow: var(--shadow-btn);
+  }
+
+  .section-padding {
+    @apply px-6 md:px-12 lg:px-24 py-20 md:py-32;
+  }
+}
