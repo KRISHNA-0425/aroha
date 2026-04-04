@@ -28,42 +28,45 @@ const FloatingNav = () => {
 
   return (
     <>
-      <motion.nav
-        className="fixed top-6 left-1/2 -translate-x-1/2 z-50 hidden md:block"
-        animate={{
-          paddingInline: scrolled ? "1.5rem" : "2rem",
-          paddingBlock: scrolled ? "0.5rem" : "0.75rem",
-          opacity: scrolled ? 0.92 : 1,
-        }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-      >
-        <div className="bg-[#070546]/95 backdrop-blur-md  border border-[#3D3B63]/60 shadow-lg flex items-center gap-2 px-2 py-[9px] rounded-full">
-          {navItems.map((item) => (
-            <Link
-              key={item.path}
-              to={item.path}
-              className={`px-3 py-3 rounded-full text-sm font-sans font-semibold transition-all duration-300 hover:-translate-y-0.5 ${
-                location.pathname === item.path
-                  ? "bg-[#3D3B63]/80 text-[#E8E3F7] font-medium"
-                  : "text-[#9E8EB3] hover:text-[#E8E3F7] hover:bg-[#3D3B63]/50"
-              }`}
-            >
-              {item.label}
+      {/* Fixed wrapper — plain div so Framer Motion transforms don't break fixed positioning */}
+      <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 hidden md:block">
+        <motion.nav
+          animate={{
+            paddingInline: scrolled ? "1.5rem" : "2rem",
+            paddingBlock: scrolled ? "0.5rem" : "0.75rem",
+            opacity: scrolled ? 0.92 : 1,
+          }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        >
+          <div className="bg-[#070546]/95 backdrop-blur-md border border-[#3D3B63]/60 shadow-lg flex items-center gap-2 px-2 py-[9px] rounded-full">
+            {/* Logo inside navbar pill */}
+            <Link to="/" className="flex items-center mr-1">
+              <img
+                src={arohaLogo}
+                alt="Aroha"
+                className="h-8 w-8 rounded-full object-cover border border-[#3D3B63]/60 hover:scale-105 transition-transform duration-300"
+              />
             </Link>
-          ))}
-        </div>
-      </motion.nav>
-
-      {/* Website Logo */}
-      <div className="fixed top-4 left-4 md:top-6 md:left-8 z-50">
-        <Link to="/">
-          <img
-            src={arohaLogo}
-            alt="Aroha"
-            className="h-12 md:h-16 w-auto rounded-xl bg-[#070546]/95 backdrop-blur-md border border-[#3D3B63]/60 p-1.5 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-          />
-        </Link>
+            {/* Divider */}
+            <div className="w-px h-5 bg-[#3D3B63]/60 mr-1" />
+            {navItems.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                className={`px-3 py-3 rounded-full text-sm font-sans font-semibold transition-all duration-300 hover:-translate-y-0.5 ${
+                  location.pathname === item.path
+                    ? "bg-[#3D3B63]/80 text-[#E8E3F7] font-medium"
+                    : "text-[#9E8EB3] hover:text-[#E8E3F7] hover:bg-[#3D3B63]/50"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        </motion.nav>
       </div>
+
+
 
       {/* Mobile menu toggle */}
       <div className="fixed top-4 right-4 z-50 md:hidden">
@@ -84,6 +87,11 @@ const FloatingNav = () => {
             exit={{ opacity: 0, y: -20 }}
             className="fixed inset-x-4 top-16 z-50 bg-[#070546]/95 backdrop-blur-xl border border-[#3D3B63]/60 shadow-2xl p-6 rounded-2xl md:hidden"
           >
+            {/* Mobile menu logo */}
+            <div className="flex items-center gap-3 mb-4 pb-4 border-b border-[#3D3B63]/40">
+              <img src={arohaLogo} alt="Aroha" className="h-9 w-9 rounded-full object-cover border border-[#3D3B63]/60" />
+              <span className="text-[#E8E3F7] font-semibold text-sm font-sans">Aroha Sanctuary</span>
+            </div>
             <div className="flex flex-col gap-2">
               {navItems.map((item) => (
                 <Link

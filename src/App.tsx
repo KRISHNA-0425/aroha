@@ -5,6 +5,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import FloatingNav from "./components/FloatingNav";
+import ScrollToTop from "./components/ScrollToTop";
 import ScrollProgress from "./components/ScrollProgress";
 import CustomCursor from "./components/CustomCursor";
 import Footer from "./components/Footer";
@@ -34,6 +35,7 @@ const App = () => {
         <Sonner />
         <ZenLoader isVisible={loading} />
         <BrowserRouter>
+          <ScrollToTop />
           <CustomCursor />
           <ScrollProgress />
           <FloatingNav />
